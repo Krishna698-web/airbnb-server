@@ -28,6 +28,7 @@ app.use(
   })
 );
 
+
 // Connection to MongoDB
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
