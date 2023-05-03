@@ -19,14 +19,9 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "humptydumtyhellohoneybunny";
 
 app.use(express.json());
+app.use(cors());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-    origin: ['http://localhost:3000/', 'http://127.0.0.1:5500/', 'https://my-airbnb-replica.netlify.app/', 'https://airbnbbackend.vercel.app/'],
-  })
-);
 
 
 // Connection to MongoDB
