@@ -20,7 +20,7 @@ const jwtSecret = "humptydumtyhellohoneybunny";
 
 app.use(express.json());
 app.use(cors({
-  origin: '*',
+  origin: 'https://aribnbclone.netlify.app/',
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 app.use("/uploads", express.static(__dirname + "/uploads"));
