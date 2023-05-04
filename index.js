@@ -13,13 +13,16 @@ const Booking = require('./models/Booking.js')
 require("dotenv").config();
 const app = express();
 
-const BASE_URL = process.env.BASE_URL;
+const PORT = process.env.PORT;
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "humptydumtyhellohoneybunny";
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}));
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(cookieParser());
 
@@ -243,7 +246,7 @@ app.get('/bookings', async (req, res) => {
   res.json(await Booking.find({ user: userData.id }).populate('place'))
 })
 
-app.listen(process.env.PORT || 4000);
+app.listen(PORT, console.log(`listening at port: ${PORT}`));
 
 // for hosting
 module.exports = app;
